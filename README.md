@@ -4,5 +4,5 @@ Long short-term memory (LSTM) is an artificial recurrent neural network (RNN) ar
 ![alt text](https://iq.opengenus.org/content/images/2018/11/rnn.png)
 
 The given code makes use of two layers of LSTM and three layers of dense neural networks to predict the price of stock based on it's movements over the past two months.
-![alt text]()
+<br /> Practically any stock which is listed on Yahoo finance can have it's price predicted.Only, the name of the stock has to be changed in the dataframe reader.
 
