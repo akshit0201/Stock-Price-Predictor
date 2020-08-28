@@ -9,14 +9,14 @@ from keras.layers import Dense, LSTM
 import matplotlib.pyplot as plt
 
 #Get the stock quote 
-df = web.DataReader('AAPL', data_source='yahoo', start='2012-01-01', end='2019-12-17') 
+df = web.DataReader('ONGC.NS', data_source='yahoo', start='2012-01-01', end='2019-12-17') 
 
 #Visualize the closing price history
 plt.figure(figsize=(16,8))
 plt.title('Close Price History')
 plt.plot(df['Close'])
 plt.xlabel('Date',fontsize=18)
-plt.ylabel('Close Price USD ($)',fontsize=18)
+plt.ylabel('Close Price Rupees (Rs)',fontsize=18)
 plt.show()
 
 #Create a new dataframe with only the 'Close' column
@@ -47,8 +47,9 @@ x_train = np.reshape(x_train, (x_train.shape[0],x_train.shape[1],1))
 
 #Build the LSTM network model
 model = Sequential()
-model.add(LSTM(units=50, return_sequences=True,input_shape=(x_train.shape[1],1)))
-model.add(LSTM(units=50, return_sequences=False))
+model.add(LSTM(units=100, return_sequences=True,input_shape=(x_train.shape[1],1)))
+model.add(LSTM(units=100, return_sequences=False))
+model.add(Dense(units=50))
 model.add(Dense(units=25))
 model.add(Dense(units=1))
 
@@ -90,7 +91,7 @@ plt.legend(['Train', 'Val', 'Predictions'], loc='lower right')
 plt.show()
 
 #Get the quote
-apple_quote = web.DataReader('AAPL', data_source='yahoo', start='2012-01-01', end='2019-12-17')
+apple_quote = web.DataReader('ONGC.NS', data_source='yahoo', start='2012-01-01', end='2019-12-17')
 #Create a new dataframe
 new_df = apple_quote.filter(['Close'])
 #Get teh last 60 day closing price 
